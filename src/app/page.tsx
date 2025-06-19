@@ -9,12 +9,63 @@ import {
   CardContent,
   Box,
   Paper,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  Slide,
+  Fab,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Divider,
 } from '@mui/material';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import CloseIcon from '@mui/icons-material/Close';
+import ContactsIcon from '@mui/icons-material/Contacts';
+import { TransitionProps } from '@mui/material/transitions';
+import { forwardRef, useState, ReactElement, Ref } from 'react';
+
+const SlideTransition = forwardRef(function Transition(
+  props: TransitionProps & {
+    children: ReactElement;
+  },
+  ref: Ref<unknown>,
+) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 export default function Home() {
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const openContactDialog = () => setDialogOpen(true);
+  const closeContactDialog = () => setDialogOpen(false);
+
+  const contactData = {
+    phone: '+48 668 633 797',
+    email: 'rembud.gorzow@gmail.com',
+    facebook: 'https://www.facebook.com/Dom.Rem.Bud.Gorzow.Wlkp',
+    address: '66-400, Gorzów Wielkopolski',
+  };
+
+  const renderContactItem = (
+    icon: ReactElement,
+    primary: string,
+    secondary?: string | ReactElement,
+  ) => (
+    <ListItem alignItems="flex-start">
+      <ListItemIcon sx={{ minWidth: 40 }}>{icon}</ListItemIcon>
+      <ListItemText
+        primary={primary}
+        secondary={secondary}
+        primaryTypographyProps={{ fontWeight: 'bold' }}
+      />
+    </ListItem>
+  );
+
   return (
     <Box>
       <Paper
@@ -37,7 +88,9 @@ export default function Home() {
             variant="contained"
             color="primary"
             size="large"
-            sx={{ mt: 2 }}
+            sx={{ mt: 2, px: 3, py: 1, borderRadius: 2 }}
+            onClick={openContactDialog}
+            startIcon={<ContactsIcon />}
           >
             Skontaktuj się z nami
           </Button>
@@ -121,32 +174,179 @@ export default function Home() {
         </Container>
       </Box>
 
-      <Box sx={{ py: 6 }}>
+      <Box sx={{ py: 6, position: 'relative' }}>
         <Container>
           <Typography variant="h2" component="h2" gutterBottom>
             Kontakt
           </Typography>
-          <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-            <PhoneIcon sx={{ mr: 1 }} />
-            <Typography variant="body1">
-              <strong>Telefon:</strong> +48 123 456 789
-            </Typography>
-          </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-            <EmailIcon sx={{ mr: 1 }} />
-            <Typography variant="body1">
-              <strong>Email:</strong> kontakt@dom-rem-bud.pl
-            </Typography>
-          </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <LocationOnIcon sx={{ mr: 1 }} />
-            <Typography variant="body1">
-              <strong>Adres:</strong> ul. Przykładowa 10, 66-400 Gorzów
-              Wielkopolski
-            </Typography>
-          </Box>
+
+          <List
+            sx={{ width: '100%', maxWidth: 600, bgcolor: 'background.paper' }}
+          >
+            {renderContactItem(
+              <PhoneIcon color="primary" />,
+              'Telefon',
+              <Button
+                variant="text"
+                href={`tel:${contactData.phone.replace(/\s/g, '')}`}
+                sx={{ p: 0, textTransform: 'none', fontWeight: 'normal' }}
+              >
+                {contactData.phone}
+              </Button>,
+            )}
+            <Divider variant="inset" component="li" />
+
+            {renderContactItem(
+              <EmailIcon color="primary" />,
+              'Email',
+              <Button
+                variant="text"
+                href={`mailto:${contactData.email}`}
+                sx={{ p: 0, textTransform: 'none', fontWeight: 'normal' }}
+              >
+                {contactData.email}
+              </Button>,
+            )}
+            <Divider variant="inset" component="li" />
+
+            {renderContactItem(
+              <FacebookIcon color="primary" />,
+              'Facebook',
+              <Button
+                variant="text"
+                href={contactData.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ p: 0, textTransform: 'none', fontWeight: 'normal' }}
+              >
+                Dom.Rem.Bud.Gorzow.Wlkp
+              </Button>,
+            )}
+            <Divider variant="inset" component="li" />
+
+            {renderContactItem(
+              <LocationOnIcon color="primary" />,
+              'Adres',
+              contactData.address,
+            )}
+          </List>
+
+          <Fab
+            color="primary"
+            aria-label="contact"
+            sx={{ position: 'fixed', bottom: 20, right: 20 }}
+            onClick={openContactDialog}
+          >
+            <ContactsIcon />
+          </Fab>
         </Container>
       </Box>
+
+      <Dialog
+        open={dialogOpen}
+        TransitionComponent={SlideTransition}
+        keepMounted
+        onClose={closeContactDialog}
+        aria-labelledby="contact-dialog-title"
+        maxWidth="xs"
+        fullWidth
+      >
+        <DialogTitle
+          id="contact-dialog-title"
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            bgcolor: 'primary.main',
+            color: 'white',
+          }}
+        >
+          <Box component="span" sx={{ display: 'flex', alignItems: 'center' }}>
+            <ContactsIcon sx={{ mr: 1 }} /> Skontaktuj się z nami
+          </Box>
+          <Fab
+            size="small"
+            color="inherit"
+            onClick={closeContactDialog}
+            sx={{ minWidth: 'unset', width: 32, height: 32 }}
+          >
+            <CloseIcon fontSize="small" />
+          </Fab>
+        </DialogTitle>
+
+        <DialogContent dividers>
+          <List sx={{ p: 0 }}>
+            <ListItem>
+              <ListItemIcon>
+                <PhoneIcon color="primary" />
+              </ListItemIcon>
+              <ListItemText
+                primary={
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    fullWidth
+                    href={`tel:${contactData.phone.replace(/\s/g, '')}`}
+                    sx={{ textAlign: 'left', justifyContent: 'flex-start' }}
+                    startIcon={<PhoneIcon />}
+                  >
+                    {contactData.phone}
+                  </Button>
+                }
+              />
+            </ListItem>
+
+            <ListItem sx={{ mt: 2 }}>
+              <ListItemIcon>
+                <EmailIcon color="primary" />
+              </ListItemIcon>
+              <ListItemText
+                primary={
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    fullWidth
+                    href={`mailto:${contactData.email}`}
+                    sx={{ textAlign: 'left', justifyContent: 'flex-start' }}
+                    startIcon={<EmailIcon />}
+                  >
+                    {contactData.email}
+                  </Button>
+                }
+              />
+            </ListItem>
+
+            <ListItem sx={{ mt: 2 }}>
+              <ListItemIcon>
+                <FacebookIcon color="primary" />
+              </ListItemIcon>
+              <ListItemText
+                primary={
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    fullWidth
+                    href={contactData.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{ textAlign: 'left', justifyContent: 'flex-start' }}
+                    startIcon={<FacebookIcon />}
+                  >
+                    Zobacz nasz profil
+                  </Button>
+                }
+              />
+            </ListItem>
+
+            <ListItem sx={{ mt: 2 }}>
+              <ListItemIcon>
+                <LocationOnIcon color="primary" />
+              </ListItemIcon>
+              <ListItemText primary="Adres" secondary={contactData.address} />
+            </ListItem>
+          </List>
+        </DialogContent>
+      </Dialog>
     </Box>
   );
 }
