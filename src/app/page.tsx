@@ -4,11 +4,7 @@ import {
   Container,
   Typography,
   Button,
-  Grid,
-  Card,
-  CardContent,
   Box,
-  Paper,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -28,6 +24,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import ContactsIcon from '@mui/icons-material/Contacts';
 import { TransitionProps } from '@mui/material/transitions';
 import { forwardRef, useState, ReactElement, Ref } from 'react';
+import HeroSection from './components/HeroSection';
+import ServicesSection from './components/ServicesSection';
+import GallerySection from './components/GallerySection';
 
 const SlideTransition = forwardRef(function Transition(
   props: TransitionProps & {
@@ -68,92 +67,9 @@ export default function Home() {
 
   return (
     <Box>
-      <Paper
-        elevation={0}
-        square
-        sx={{
-          bgcolor: 'background.default',
-          py: 8,
-          textAlign: 'center',
-        }}
-      >
-        <Container>
-          <Typography variant="h2" component="h2" gutterBottom>
-            Kompleksowe remonty mieszkań w Gorzowie Wielkopolskim
-          </Typography>
-          <Typography variant="h5" paragraph>
-            Profesjonalne wykończenia wnętrz, remonty i modernizacje
-          </Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            size="large"
-            sx={{ mt: 2, px: 3, py: 1, borderRadius: 2 }}
-            onClick={openContactDialog}
-            startIcon={<ContactsIcon />}
-          >
-            Skontaktuj się z nami
-          </Button>
-        </Container>
-      </Paper>
+      <HeroSection openContactDialog={openContactDialog} />
 
-      <Box sx={{ py: 6 }}>
-        <Container>
-          <Typography variant="h2" component="h2" align="center" gutterBottom>
-            Nasze usługi
-          </Typography>
-          <Grid container spacing={3} sx={{ mt: 2 }}>
-            <Grid item xs={12} sm={6} md={3}>
-              <Card sx={{ height: '100%' }}>
-                <CardContent>
-                  <Typography variant="h3" component="h3">
-                    Remonty kompleksowe
-                  </Typography>
-                  <Typography variant="body1">
-                    Pełny zakres prac remontowych od A do Z
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={12} sm={6} md={3}>
-              <Card sx={{ height: '100%' }}>
-                <CardContent>
-                  <Typography variant="h3" component="h3">
-                    Wykończenia wnętrz
-                  </Typography>
-                  <Typography variant="body1">
-                    Profesjonalne wykończenie nowych mieszkań
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={12} sm={6} md={3}>
-              <Card sx={{ height: '100%' }}>
-                <CardContent>
-                  <Typography variant="h3" component="h3">
-                    Prace malarskie
-                  </Typography>
-                  <Typography variant="body1">
-                    Malowanie ścian, sufitów i innych powierzchni
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={12} sm={6} md={3}>
-              <Card sx={{ height: '100%' }}>
-                <CardContent>
-                  <Typography variant="h3" component="h3">
-                    Układanie glazury
-                  </Typography>
-                  <Typography variant="body1">
-                    Montaż płytek ściennych i podłogowych
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
+      <ServicesSection />
 
       <Box sx={{ py: 6, bgcolor: 'background.default' }}>
         <Container>
@@ -173,6 +89,15 @@ export default function Home() {
           </Typography>
         </Container>
       </Box>
+
+      <GallerySection
+        images={[
+          { src: '/images/gallery1.jpg', alt: 'Zdjęcie 1' },
+          { src: '/images/gallery2.jpg', alt: 'Zdjęcie 2' },
+          { src: '/images/gallery3.jpg', alt: 'Zdjęcie 3' },
+          { src: '/images/gallery4.jpg', alt: 'Zdjęcie 4' },
+        ]}
+      />
 
       <Box sx={{ py: 6, position: 'relative' }}>
         <Container>
