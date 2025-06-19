@@ -1,95 +1,152 @@
-import Image from 'next/image';
-import styles from './page.module.css';
+'use client';
+
+import {
+  Container,
+  Typography,
+  Button,
+  Grid,
+  Card,
+  CardContent,
+  Box,
+  Paper,
+} from '@mui/material';
+import PhoneIcon from '@mui/icons-material/Phone';
+import EmailIcon from '@mui/icons-material/Email';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <Box>
+      <Paper
+        elevation={0}
+        square
+        sx={{
+          bgcolor: 'background.default',
+          py: 8,
+          textAlign: 'center',
+        }}
+      >
+        <Container>
+          <Typography variant="h2" component="h2" gutterBottom>
+            Kompleksowe remonty mieszkań w Gorzowie Wielkopolskim
+          </Typography>
+          <Typography variant="h5" paragraph>
+            Profesjonalne wykończenia wnętrz, remonty i modernizacje
+          </Typography>
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            sx={{ mt: 2 }}
+          >
+            Skontaktuj się z nami
+          </Button>
+        </Container>
+      </Paper>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      <Box sx={{ py: 6 }}>
+        <Container>
+          <Typography variant="h2" component="h2" align="center" gutterBottom>
+            Nasze usługi
+          </Typography>
+          <Grid container spacing={3} sx={{ mt: 2 }}>
+            <Grid item xs={12} sm={6} md={3}>
+              <Card sx={{ height: '100%' }}>
+                <CardContent>
+                  <Typography variant="h3" component="h3">
+                    Remonty kompleksowe
+                  </Typography>
+                  <Typography variant="body1">
+                    Pełny zakres prac remontowych od A do Z
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <Card sx={{ height: '100%' }}>
+                <CardContent>
+                  <Typography variant="h3" component="h3">
+                    Wykończenia wnętrz
+                  </Typography>
+                  <Typography variant="body1">
+                    Profesjonalne wykończenie nowych mieszkań
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <Card sx={{ height: '100%' }}>
+                <CardContent>
+                  <Typography variant="h3" component="h3">
+                    Prace malarskie
+                  </Typography>
+                  <Typography variant="body1">
+                    Malowanie ścian, sufitów i innych powierzchni
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <Card sx={{ height: '100%' }}>
+                <CardContent>
+                  <Typography variant="h3" component="h3">
+                    Układanie glazury
+                  </Typography>
+                  <Typography variant="body1">
+                    Montaż płytek ściennych i podłogowych
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+
+      <Box sx={{ py: 6, bgcolor: 'background.default' }}>
+        <Container>
+          <Typography variant="h2" component="h2" gutterBottom>
+            O nas
+          </Typography>
+          <Typography variant="body1" paragraph>
+            Dom Rem-Bud to firma z wieloletnim doświadczeniem na rynku
+            remontowo-budowlanym. Specjalizujemy się w kompleksowych remontach
+            mieszkań oraz wykończeniach wnętrz na terenie Gorzowa
+            Wielkopolskiego i okolic.
+          </Typography>
+          <Typography variant="body1">
+            Nasze usługi wykonujemy solidnie, terminowo i w konkurencyjnych
+            cenach. Zapewniamy doradztwo techniczne oraz pomoc w doborze
+            materiałów.
+          </Typography>
+        </Container>
+      </Box>
+
+      <Box sx={{ py: 6 }}>
+        <Container>
+          <Typography variant="h2" component="h2" gutterBottom>
+            Kontakt
+          </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+            <PhoneIcon sx={{ mr: 1 }} />
+            <Typography variant="body1">
+              <strong>Telefon:</strong> +48 123 456 789
+            </Typography>
+          </Box>
+          <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+            <EmailIcon sx={{ mr: 1 }} />
+            <Typography variant="body1">
+              <strong>Email:</strong> kontakt@dom-rem-bud.pl
+            </Typography>
+          </Box>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <LocationOnIcon sx={{ mr: 1 }} />
+            <Typography variant="body1">
+              <strong>Adres:</strong> ul. Przykładowa 10, 66-400 Gorzów
+              Wielkopolski
+            </Typography>
+          </Box>
+        </Container>
+      </Box>
+    </Box>
   );
 }
