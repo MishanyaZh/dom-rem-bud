@@ -15,6 +15,7 @@ import {
   ListItemIcon,
   ListItemText,
   Divider,
+  IconButton,
 } from '@mui/material';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
@@ -68,10 +69,9 @@ export default function Home() {
   return (
     <Box>
       <HeroSection openContactDialog={openContactDialog} />
-
       <ServicesSection />
 
-      <Box sx={{ py: 6, bgcolor: 'background.default' }}>
+      <Box sx={{ py: 4, bgcolor: 'background.default' }}>
         <Container>
           <Typography variant="h2" component="h2" gutterBottom>
             O nas
@@ -99,7 +99,7 @@ export default function Home() {
         ]}
       />
 
-      <Box sx={{ py: 6, position: 'relative' }}>
+      <Box sx={{ py: 4, position: 'relative' }}>
         <Container>
           <Typography variant="h2" component="h2" gutterBottom>
             Kontakt
@@ -159,7 +159,7 @@ export default function Home() {
           <Fab
             color="primary"
             aria-label="contact"
-            sx={{ position: 'fixed', bottom: 20, right: 20 }}
+            sx={{ position: 'fixed', bottom: 60, right: 20 }}
             onClick={openContactDialog}
           >
             <ContactsIcon />
@@ -189,14 +189,13 @@ export default function Home() {
           <Box component="span" sx={{ display: 'flex', alignItems: 'center' }}>
             <ContactsIcon sx={{ mr: 1 }} /> Skontaktuj się z nami
           </Box>
-          <Fab
-            size="small"
-            color="inherit"
+          <IconButton
             onClick={closeContactDialog}
-            sx={{ minWidth: 'unset', width: 32, height: 32 }}
+            color="inherit"
+            sx={{ width: 32, height: 32, p: 0 }}
           >
             <CloseIcon fontSize="small" />
-          </Fab>
+          </IconButton>
         </DialogTitle>
 
         <DialogContent dividers>

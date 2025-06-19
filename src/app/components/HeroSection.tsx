@@ -13,7 +13,7 @@ export default function HeroSection({ openContactDialog }: HeroSectionProps) {
       square
       sx={{
         bgcolor: 'background.default',
-        py: 8,
+        py: 6,
         textAlign: 'center',
       }}
     >

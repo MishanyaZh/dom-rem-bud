@@ -7,7 +7,7 @@ interface GallerySectionProps {
 
 export default function GallerySection({ images }: GallerySectionProps) {
   return (
-    <Container sx={{ py: 6 }}>
+    <Container sx={{ py: 4 }}>
       <Typography variant="h2" component="h2" gutterBottom align="center">
         Galeria
       </Typography>

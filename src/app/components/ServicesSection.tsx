@@ -10,7 +10,7 @@ import {
 
 export default function ServicesSection() {
   return (
-    <Box sx={{ py: 6 }}>
+    <Box sx={{ py: 4 }}>
       <Container>
         <Typography variant="h2" component="h2" align="center" gutterBottom>
           Nasze usługi
