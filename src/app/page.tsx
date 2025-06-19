@@ -61,7 +61,10 @@ export default function Home() {
       <ListItemText
         primary={primary}
         secondary={secondary}
-        primaryTypographyProps={{ fontWeight: 'bold' }}
+        primaryTypographyProps={{
+          fontWeight: 'bold',
+          textTransform: 'none',
+        }}
       />
     </ListItem>
   );
@@ -198,10 +201,10 @@ export default function Home() {
           </IconButton>
         </DialogTitle>
 
-        <DialogContent dividers>
+        <DialogContent>
           <List sx={{ p: 0 }}>
-            <ListItem>
-              <ListItemIcon>
+            <ListItem sx={{ p: 0, mt: 1 }}>
+              <ListItemIcon sx={{ minWidth: 32 }}>
                 <PhoneIcon color="primary" />
               </ListItemIcon>
               <ListItemText
@@ -211,7 +214,11 @@ export default function Home() {
                     color="primary"
                     fullWidth
                     href={`tel:${contactData.phone.replace(/\s/g, '')}`}
-                    sx={{ textAlign: 'left', justifyContent: 'flex-start' }}
+                    sx={{
+                      textAlign: 'left',
+                      justifyContent: 'flex-start',
+                      textTransform: 'none',
+                    }}
                     startIcon={<PhoneIcon />}
                   >
                     {contactData.phone}
@@ -220,8 +227,8 @@ export default function Home() {
               />
             </ListItem>
 
-            <ListItem sx={{ mt: 2 }}>
-              <ListItemIcon>
+            <ListItem sx={{ p: 0, mt: 2 }}>
+              <ListItemIcon sx={{ minWidth: 32 }}>
                 <EmailIcon color="primary" />
               </ListItemIcon>
               <ListItemText
@@ -231,7 +238,11 @@ export default function Home() {
                     color="secondary"
                     fullWidth
                     href={`mailto:${contactData.email}`}
-                    sx={{ textAlign: 'left', justifyContent: 'flex-start' }}
+                    sx={{
+                      textAlign: 'left',
+                      justifyContent: 'flex-start',
+                      textTransform: 'none',
+                    }}
                     startIcon={<EmailIcon />}
                   >
                     {contactData.email}
@@ -240,8 +251,8 @@ export default function Home() {
               />
             </ListItem>
 
-            <ListItem sx={{ mt: 2 }}>
-              <ListItemIcon>
+            <ListItem sx={{ p: 0, mt: 2 }}>
+              <ListItemIcon sx={{ minWidth: 32 }}>
                 <FacebookIcon color="primary" />
               </ListItemIcon>
               <ListItemText
@@ -253,7 +264,11 @@ export default function Home() {
                     href={contactData.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
-                    sx={{ textAlign: 'left', justifyContent: 'flex-start' }}
+                    sx={{
+                      textAlign: 'left',
+                      justifyContent: 'flex-start',
+                      textTransform: 'none',
+                    }}
                     startIcon={<FacebookIcon />}
                   >
                     Zobacz nasz profil
@@ -262,8 +277,8 @@ export default function Home() {
               />
             </ListItem>
 
-            <ListItem sx={{ mt: 2 }}>
-              <ListItemIcon>
+            <ListItem sx={{ p: 0, mt: 2 }}>
+              <ListItemIcon sx={{ minWidth: 32 }}>
                 <LocationOnIcon color="primary" />
               </ListItemIcon>
               <ListItemText primary="Adres" secondary={contactData.address} />
