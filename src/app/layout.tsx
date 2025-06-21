@@ -4,6 +4,7 @@ import './globals.css';
 import Providers from './providers';
 import ThemeToggleButton from './components/ThemeToggleButton';
 import SEO from '../../next-seo.config.js';
+import { contactData } from '@/utils/contactData';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -15,12 +16,38 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: SEO.defaultTitle,
+  telephone: contactData.phone,
+  email: contactData.email,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Gorzów Wielkopolski',
+    postalCode: '66-400',
+    streetAddress: contactData.address,
+  },
+  url: SEO.openGraph.url,
+  sameAs: [contactData.facebook],
+  description: SEO.description,
+};
+
 export const metadata: Metadata = {
   title: {
     default: SEO.defaultTitle,
     template: `%s | ${SEO.defaultTitle}`,
   },
   description: SEO.description,
+  keywords: [
+    'remonty mieszkań Gorzów Wielkopolski',
+    'wykończenia wnętrz Gorzów Wielkopolski',
+    'kompleksowe remonty Gorzów',
+    'usługi remontowe Gorzów',
+    'malowanie Gorzów',
+    'układanie glazury Gorzów',
+    'firma remontowa Gorzów',
+  ],
   openGraph: {
     type: 'website',
     locale: 'pl_PL',
@@ -38,6 +65,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Providers>
           <div className="app-layout">
