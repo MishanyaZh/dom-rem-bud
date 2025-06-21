@@ -17,6 +17,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { ReactElement } from 'react';
 import { contactData } from '@/utils/contactData';
+import { motion } from 'framer-motion';
 
 const ContactsSection = () => {
   const renderContactItem = (
@@ -38,62 +39,69 @@ const ContactsSection = () => {
   );
 
   return (
-    <Box sx={{ py: 4, position: 'relative' }}>
+    <Box sx={{ py: 4, position: 'relative', overflow: 'hidden' }}>
       <Container>
-        <Typography variant="h2" component="h2" gutterBottom>
-          Kontakt
-        </Typography>
-
-        <List
-          sx={{ width: '100%', maxWidth: 600, bgcolor: 'background.paper' }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5 }}
         >
-          {renderContactItem(
-            <PhoneIcon color="primary" />,
-            'Telefon',
-            <Button
-              variant="text"
-              href={`tel:${contactData.phone.replace(/\s/g, '')}`}
-              sx={{ p: 0, textTransform: 'none', fontWeight: 'normal' }}
-            >
-              {contactData.phone}
-            </Button>,
-          )}
-          <Divider variant="inset" component="li" />
+          <Typography variant="h2" component="h2" gutterBottom>
+            Kontakt
+          </Typography>
 
-          {renderContactItem(
-            <EmailIcon color="primary" />,
-            'Email',
-            <Button
-              variant="text"
-              href={`mailto:${contactData.email}`}
-              sx={{ p: 0, textTransform: 'none', fontWeight: 'normal' }}
-            >
-              {contactData.email}
-            </Button>,
-          )}
-          <Divider variant="inset" component="li" />
+          <List
+            sx={{ width: '100%', maxWidth: 600, bgcolor: 'background.paper' }}
+          >
+            {renderContactItem(
+              <PhoneIcon color="primary" />,
+              'Telefon',
+              <Button
+                variant="text"
+                href={`tel:${contactData.phone.replace(/\s/g, '')}`}
+                sx={{ p: 0, textTransform: 'none', fontWeight: 'normal' }}
+              >
+                {contactData.phone}
+              </Button>,
+            )}
+            <Divider variant="inset" component="li" />
 
-          {renderContactItem(
-            <FacebookIcon color="primary" />,
-            'Facebook',
-            <Button
-              variant="text"
-              href={contactData.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{ p: 0, textTransform: 'none', fontWeight: 'normal' }}
-            >
-              Dom.Rem.Bud.Gorzow.Wlkp
-            </Button>,
-          )}
-          <Divider variant="inset" component="li" />
+            {renderContactItem(
+              <EmailIcon color="primary" />,
+              'Email',
+              <Button
+                variant="text"
+                href={`mailto:${contactData.email}`}
+                sx={{ p: 0, textTransform: 'none', fontWeight: 'normal' }}
+              >
+                {contactData.email}
+              </Button>,
+            )}
+            <Divider variant="inset" component="li" />
 
-          {renderContactItem(
-            <LocationOnIcon color="primary" />,
-            'Adres',
-            contactData.address,
-          )}
-        </List>
+            {renderContactItem(
+              <FacebookIcon color="primary" />,
+              'Facebook',
+              <Button
+                variant="text"
+                href={contactData.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ p: 0, textTransform: 'none', fontWeight: 'normal' }}
+              >
+                Dom.Rem.Bud.Gorzow.Wlkp
+              </Button>,
+            )}
+            <Divider variant="inset" component="li" />
+
+            {renderContactItem(
+              <LocationOnIcon color="primary" />,
+              'Adres',
+              contactData.address,
+            )}
+          </List>
+        </motion.div>
       </Container>
     </Box>
   );
