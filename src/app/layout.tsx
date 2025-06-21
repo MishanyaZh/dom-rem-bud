@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Providers from './providers';
 import ThemeToggleButton from './components/ThemeToggleButton';
+import SEO from '../../next-seo.config.js';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -15,9 +16,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Dom Rem-Bud',
-  description:
-    'Profesjonalne wykończenia wnętrz i kompleksowe remonty mieszkań na terenie Gorzowa Wielkopolskiego i okolic.',
+  title: {
+    default: SEO.defaultTitle,
+    template: `%s | ${SEO.defaultTitle}`,
+  },
+  description: SEO.description,
+  openGraph: {
+    type: 'website',
+    locale: 'pl_PL',
+    url: SEO.openGraph.url,
+    siteName: SEO.openGraph.site_name,
+    title: SEO.defaultTitle,
+    description: SEO.description,
+  },
 };
 
 export default function RootLayout({
