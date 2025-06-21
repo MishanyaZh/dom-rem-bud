@@ -8,6 +8,25 @@ import {
   Box,
 } from '@mui/material';
 
+const services = [
+  {
+    title: 'Remonty kompleksowe',
+    description: 'Pełny zakres prac remontowych od A do Z',
+  },
+  {
+    title: 'Wykończenia wnętrz',
+    description: 'Profesjonalne wykończenie nowych mieszkań',
+  },
+  {
+    title: 'Prace malarskie',
+    description: 'Malowanie ścian, sufitów i innych powierzchni',
+  },
+  {
+    title: 'Układanie glazury',
+    description: 'Montaż płytek ściennych i podłogowych',
+  },
+];
+
 export default function ServicesSection() {
   return (
     <Box sx={{ py: 4 }}>
@@ -16,54 +35,28 @@ export default function ServicesSection() {
           Nasze usługi
         </Typography>
         <Grid container spacing={3} sx={{ mt: 2 }}>
-          <Grid item xs={12} sm={6} md={3}>
-            <Card sx={{ height: '100%' }}>
-              <CardContent>
-                <Typography variant="h4" component="h4">
-                  Remonty kompleksowe
-                </Typography>
-                <Typography variant="body1">
-                  Pełny zakres prac remontowych od A do Z
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Card sx={{ height: '100%' }}>
-              <CardContent>
-                <Typography variant="h4" component="h4">
-                  Wykończenia wnętrz
-                </Typography>
-                <Typography variant="body1">
-                  Profesjonalne wykończenie nowych mieszkań
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Card sx={{ height: '100%' }}>
-              <CardContent>
-                <Typography variant="h4" component="h4">
-                  Prace malarskie
-                </Typography>
-                <Typography variant="body1">
-                  Malowanie ścian, sufitów i innych powierzchni
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Card sx={{ height: '100%' }}>
-              <CardContent>
-                <Typography variant="h4" component="h4">
-                  Układanie glazury
-                </Typography>
-                <Typography variant="body1">
-                  Montaż płytek ściennych i podłogowych
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
+          {services.map((service) => (
+            <Grid item xs={12} sm={6} md={3} key={service.title}>
+              <Card
+                sx={{
+                  height: '100%',
+                  transition:
+                    'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+                  '&:hover': {
+                    transform: 'translateY(-8px)',
+                    boxShadow: (theme) => theme.shadows[8],
+                  },
+                }}
+              >
+                <CardContent>
+                  <Typography variant="h4" component="h4">
+                    {service.title}
+                  </Typography>
+                  <Typography variant="body1">{service.description}</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
         </Grid>
       </Container>
     </Box>
