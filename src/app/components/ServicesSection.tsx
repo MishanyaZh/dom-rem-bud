@@ -19,7 +19,7 @@ export default function ServicesSection() {
           <Grid item xs={12} sm={6} md={3}>
             <Card sx={{ height: '100%' }}>
               <CardContent>
-                <Typography variant="h3" component="h3">
+                <Typography variant="h4" component="h4">
                   Remonty kompleksowe
                 </Typography>
                 <Typography variant="body1">
@@ -31,7 +31,7 @@ export default function ServicesSection() {
           <Grid item xs={12} sm={6} md={3}>
             <Card sx={{ height: '100%' }}>
               <CardContent>
-                <Typography variant="h3" component="h3">
+                <Typography variant="h4" component="h4">
                   Wykończenia wnętrz
                 </Typography>
                 <Typography variant="body1">
@@ -43,7 +43,7 @@ export default function ServicesSection() {
           <Grid item xs={12} sm={6} md={3}>
             <Card sx={{ height: '100%' }}>
               <CardContent>
-                <Typography variant="h3" component="h3">
+                <Typography variant="h4" component="h4">
                   Prace malarskie
                 </Typography>
                 <Typography variant="body1">
@@ -55,7 +55,7 @@ export default function ServicesSection() {
           <Grid item xs={12} sm={6} md={3}>
             <Card sx={{ height: '100%' }}>
               <CardContent>
-                <Typography variant="h3" component="h3">
+                <Typography variant="h4" component="h4">
                   Układanie glazury
                 </Typography>
                 <Typography variant="body1">

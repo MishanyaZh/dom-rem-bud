@@ -1,33 +1,33 @@
 'use client';
 
+import AboutSection from './components/AboutSection';
+import ContactsSection from './components/ContactsSection';
+import GallerySection from './components/GallerySection';
+import HeroSection from './components/HeroSection';
+import ServicesSection from './components/ServicesSection';
+import { contactData } from '@/utils/contactData';
+import CloseIcon from '@mui/icons-material/Close';
+import ContactsIcon from '@mui/icons-material/Contacts';
+import EmailIcon from '@mui/icons-material/Email';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import PhoneIcon from '@mui/icons-material/Phone';
 import {
-  Container,
-  Typography,
-  Button,
   Box,
+  Button,
   Dialog,
-  DialogTitle,
   DialogContent,
-  Slide,
+  DialogTitle,
   Fab,
+  IconButton,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
-  Divider,
-  IconButton,
+  Slide,
 } from '@mui/material';
-import PhoneIcon from '@mui/icons-material/Phone';
-import EmailIcon from '@mui/icons-material/Email';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import CloseIcon from '@mui/icons-material/Close';
-import ContactsIcon from '@mui/icons-material/Contacts';
 import { TransitionProps } from '@mui/material/transitions';
-import { forwardRef, useState, ReactElement, Ref } from 'react';
-import HeroSection from './components/HeroSection';
-import ServicesSection from './components/ServicesSection';
-import GallerySection from './components/GallerySection';
+import { forwardRef, ReactElement, Ref, useState } from 'react';
 
 const SlideTransition = forwardRef(function Transition(
   props: TransitionProps & {
@@ -44,55 +44,11 @@ export default function Home() {
   const openContactDialog = () => setDialogOpen(true);
   const closeContactDialog = () => setDialogOpen(false);
 
-  const contactData = {
-    phone: '+48 668 633 797',
-    email: 'rembud.gorzow@gmail.com',
-    facebook: 'https://www.facebook.com/Dom.Rem.Bud.Gorzow.Wlkp',
-    address: '66-400, Gorzów Wielkopolski',
-  };
-
-  const renderContactItem = (
-    icon: ReactElement,
-    primary: string,
-    secondary?: string | ReactElement,
-  ) => (
-    <ListItem alignItems="flex-start">
-      <ListItemIcon sx={{ minWidth: 40 }}>{icon}</ListItemIcon>
-      <ListItemText
-        primary={primary}
-        secondary={secondary}
-        primaryTypographyProps={{
-          fontWeight: 'bold',
-          textTransform: 'none',
-        }}
-      />
-    </ListItem>
-  );
-
   return (
     <Box>
       <HeroSection openContactDialog={openContactDialog} />
       <ServicesSection />
-
-      <Box sx={{ py: 4, bgcolor: 'background.default' }}>
-        <Container>
-          <Typography variant="h2" component="h2" gutterBottom>
-            O nas
-          </Typography>
-          <Typography variant="body1" paragraph>
-            Dom Rem-Bud to firma z wieloletnim doświadczeniem na rynku
-            remontowo-budowlanym. Specjalizujemy się w kompleksowych remontach
-            mieszkań oraz wykończeniach wnętrz na terenie Gorzowa
-            Wielkopolskiego i okolic.
-          </Typography>
-          <Typography variant="body1">
-            Nasze usługi wykonujemy solidnie, terminowo i w konkurencyjnych
-            cenach. Zapewniamy doradztwo techniczne oraz pomoc w doborze
-            materiałów.
-          </Typography>
-        </Container>
-      </Box>
-
+      <AboutSection />
       <GallerySection
         images={[
           { src: '/images/gallery1.jpg', alt: 'Zdjęcie 1' },
@@ -101,74 +57,16 @@ export default function Home() {
           { src: '/images/gallery4.jpg', alt: 'Zdjęcie 4' },
         ]}
       />
+      <ContactsSection />
 
-      <Box sx={{ py: 4, position: 'relative' }}>
-        <Container>
-          <Typography variant="h2" component="h2" gutterBottom>
-            Kontakt
-          </Typography>
-
-          <List
-            sx={{ width: '100%', maxWidth: 600, bgcolor: 'background.paper' }}
-          >
-            {renderContactItem(
-              <PhoneIcon color="primary" />,
-              'Telefon',
-              <Button
-                variant="text"
-                href={`tel:${contactData.phone.replace(/\s/g, '')}`}
-                sx={{ p: 0, textTransform: 'none', fontWeight: 'normal' }}
-              >
-                {contactData.phone}
-              </Button>,
-            )}
-            <Divider variant="inset" component="li" />
-
-            {renderContactItem(
-              <EmailIcon color="primary" />,
-              'Email',
-              <Button
-                variant="text"
-                href={`mailto:${contactData.email}`}
-                sx={{ p: 0, textTransform: 'none', fontWeight: 'normal' }}
-              >
-                {contactData.email}
-              </Button>,
-            )}
-            <Divider variant="inset" component="li" />
-
-            {renderContactItem(
-              <FacebookIcon color="primary" />,
-              'Facebook',
-              <Button
-                variant="text"
-                href={contactData.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                sx={{ p: 0, textTransform: 'none', fontWeight: 'normal' }}
-              >
-                Dom.Rem.Bud.Gorzow.Wlkp
-              </Button>,
-            )}
-            <Divider variant="inset" component="li" />
-
-            {renderContactItem(
-              <LocationOnIcon color="primary" />,
-              'Adres',
-              contactData.address,
-            )}
-          </List>
-
-          <Fab
-            color="primary"
-            aria-label="contact"
-            sx={{ position: 'fixed', bottom: 60, right: 20 }}
-            onClick={openContactDialog}
-          >
-            <ContactsIcon />
-          </Fab>
-        </Container>
-      </Box>
+      <Fab
+        color="primary"
+        aria-label="contact"
+        sx={{ position: 'fixed', bottom: 60, right: 20 }}
+        onClick={openContactDialog}
+      >
+        <ContactsIcon />
+      </Fab>
 
       <Dialog
         open={dialogOpen}
