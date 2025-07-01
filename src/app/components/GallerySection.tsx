@@ -36,7 +36,7 @@ const itemVariants = {
 
 export default function GallerySection({ images }: GallerySectionProps) {
   return (
-    <Box sx={{ py: 4, overflow: 'hidden' }}>
+    <Box id="gallery" sx={{ py: 4, overflow: 'hidden' }}>
       <Container>
         <motion.div
           initial={{ opacity: 0, y: -20 }}

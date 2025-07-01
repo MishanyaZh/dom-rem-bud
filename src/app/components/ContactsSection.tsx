@@ -39,7 +39,7 @@ const ContactsSection = () => {
   );
 
   return (
-    <Box sx={{ py: 4, position: 'relative', overflow: 'hidden' }}>
+    <Box id="contact" sx={{ py: 4, position: 'relative', overflow: 'hidden' }}>
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

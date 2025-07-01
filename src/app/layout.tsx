@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Providers from './providers';
-import ThemeToggleButton from './components/ThemeToggleButton';
 import SEO from '../../next-seo.config.js';
 import { contactData } from '@/utils/contactData';
+import Header from './components/Header';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -74,13 +74,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Providers>
           <div className="app-layout">
-            <header className="site-header">
-              <div className="container">
-                <h1>Dom Rem-Bud</h1>
-                <p>Profesjonalne wykończenia wnętrz</p>
-                <ThemeToggleButton />
-              </div>
-            </header>
+            <Header />
             <main>{children}</main>
             <footer className="site-footer">
               <div className="container">

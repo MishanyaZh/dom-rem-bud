@@ -5,7 +5,10 @@ import { motion } from 'framer-motion';
 
 const AboutSection = () => {
   return (
-    <Box sx={{ py: 4, bgcolor: 'background.default', overflow: 'hidden' }}>
+    <Box
+      id="about"
+      sx={{ py: 4, bgcolor: 'background.default', overflow: 'hidden' }}
+    >
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

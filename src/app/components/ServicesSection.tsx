@@ -51,7 +51,7 @@ const itemVariants = {
 
 export default function ServicesSection() {
   return (
-    <Box sx={{ py: 4, overflow: 'hidden' }}>
+    <Box id="services" sx={{ py: 4, overflow: 'hidden' }}>
       <Container>
         <motion.div
           initial={{ opacity: 0, y: -20 }}
